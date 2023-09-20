@@ -3,7 +3,7 @@ const cors = require("cors");
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const Rates = require("./models/Rates");
-
+const axios = require("axios");
 const app = express();
 
 mongoose.connect(process.env.MONGO_URL);
