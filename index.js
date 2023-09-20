@@ -5,9 +5,6 @@ const mongoose = require("mongoose");
 const Rates = require("./models/Rates");
 
 const app = express();
-app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
-const port = process.env.PORT || 3000; // Use PORT from environment or default to 3000
-const axios = require("axios");
 
 mongoose.connect(process.env.MONGO_URL);
 
@@ -19,8 +16,6 @@ app.get("/", async (req, res) => {
 });
 app.get("/rates", async (req, res) => {
   const rates = (await axios.get(process.env.API)).data.rates;
-  console.log(rates);
-
   res.send({ hello: rates });
 });
 app.post("/conversion", async (req, res) => {
