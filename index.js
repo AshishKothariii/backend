@@ -10,6 +10,7 @@ mongoose.connect(process.env.MONGO_URL);
 
 app.use(express.json());
 app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
+const port = process.env.PORT || 3000; // Use PORT from environment or default to 3000
 
 app.get("/", async (req, res) => {
   res.send("hello");
