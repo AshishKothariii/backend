@@ -16,8 +16,9 @@ app.get("/", async (req, res) => {
   res.send("hello");
 });
 app.get("/rates", async (req, res) => {
-  const rates = (await axios.get(process.env.API)).data.rates;
-  res.send({ hello: rates });
+  const rates = await axios.get(process.env.API);
+  const rate = rates.data.rates;
+  res.send({ hello: rate });
 });
 app.post("/conversion", async (req, res) => {
   const amount = req.body.amount;
