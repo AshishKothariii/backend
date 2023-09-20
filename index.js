@@ -9,7 +9,7 @@ const app = express();
 mongoose.connect(process.env.MONGO_URL);
 
 app.use(express.json());
-app.use(cors(process.env.CLIENT_URL));
+app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
 
 app.get("/", async (req, res) => {
   res.send("hello");
